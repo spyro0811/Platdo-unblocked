@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><!-- PLATDO STARTUP HEAD -->
+<link rel="stylesheet" href="assets/css/v16-style-01.css">
+<script src="assets/js/v16-script-01.js"></script>
+<!-- PLATDO STARTUP HEAD END -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>PLATDO</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="assets/css/v16-style-02.css">
+    <link rel="stylesheet" href="assets/css/v16-style-03.css">
+<link rel="stylesheet" href="assets/css/v16-style-04.css">
+<link rel="stylesheet" href="assets/css/v16-style-05.css">
+<link rel="stylesheet" href="assets/css/v16-style-06.css">
+<link rel="stylesheet" href="assets/css/v16-style-07.css">
+<link rel="stylesheet" href="assets/css/v16-style-08.css">
+<link rel="stylesheet" href="assets/css/v16-style-09.css"><link rel="stylesheet" href="assets/css/v16-style-10.css"><link rel="stylesheet" href="assets/css/v16-style-11.css"><link rel="stylesheet" href="assets/css/v16-style-12.css"><link rel="stylesheet" href="assets/css/v16-style-13.css"><link rel="stylesheet" href="assets/css/v16-style-14.css" id="godCorePresentationStyle">
+<link rel="stylesheet" href="assets/css/v16-style-15.css" id="platdoJumpPresentationStyle">
+<link rel="stylesheet" href="assets/css/v16-style-16.css" id="platdoJumpFullWindowStyle">
+<!-- code-platdo-presentation -->
+<link rel="stylesheet" href="assets/css/v16-style-17.css">
+<link rel="stylesheet" href="assets/css/v16-style-18.css" id="platdoJumpArcadeStyle">
+<link rel="stylesheet" href="assets/css/v16-style-19.css" id="godCoreCoverStyle">
+<!-- code-platdo-game-lobby -->
+<link rel="stylesheet" href="assets/css/v16-style-20.css">
+<link rel="stylesheet" href="assets/css/v16-style-21.css">
+<link rel="stylesheet" href="assets/css/v16-style-22.css">
+
+<!-- PLATDO SHARED CONTROLS BEGIN -->
+<link rel="stylesheet" href="assets/css/v16-style-23.css">
+<script src="assets/js/v16-script-02.js"></script>
+<!-- PLATDO SHARED CONTROLS END -->
+<link rel="stylesheet" href="assets/css/v16-style-24.css" id="platdo-shared-graphics-style">
+<script id="platdo-shared-graphics-script" src="assets/js/v16-script-03.js"></script>
+</head>
+<body class="hub-open bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 overflow-x-hidden"><!-- PLATDO STARTUP BODY --><section id="platdoStartup" aria-label="Loading PLATDO"><div id="platdoWarningHost" hidden></div><div id="platdoPreparationCard" class="startup-card"><h1>PLATDO<span>.</span></h1><progress id="platdoStartupProgress" max="100" value="0" aria-label="Loading all games"></progress><div class="startup-line"><p id="platdoStartupLabel" role="status" aria-live="polite">Preparing your games…</p><span id="platdoStartupPercent">0%</span></div><button id="platdoStartupRetry" hidden>Retry loading</button></div></section><!-- PLATDO STARTUP BODY END --><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="fieldWhiteKey" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 3"/><feComponentTransfer><feFuncA type="linear" slope="20" intercept="0"/></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"/></filter><filter id="fieldGrenadeKey" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 2.40"/><feComponentTransfer><feFuncA type="linear" slope="20" intercept="0"/></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"/></filter></defs></svg>
+
+    <main id="gameHub" aria-label="Choose a mini game">
+        <audio id="selectorMusic" src="assets/audio/90596a0320513294e600.m4a" loop preload="metadata"></audio>
+        <button id="quickMusicMuteBtn" type="button" aria-label="Mute menu music" aria-pressed="false" style="position:absolute;right:24px;top:80px;padding:10px 18px;border:1px solid #bbb;border-radius:12px;background:white;color:#111;cursor:pointer;font-weight:bold">🔊 Music On</button>
+        <button id="mainSettingsBtn" style="position:absolute;right:24px;top:24px;padding:12px 22px;border:1px solid #bbb;border-radius:12px;background:white;color:#111;cursor:pointer;font-weight:bold">⚙ Settings</button>
+        <dialog id="mainSettingsDialog" style="width:min(440px,calc(100% - 32px));border:1px solid #ccc;border-radius:20px;padding:28px;color:#172033;background:white">
+          <h2 style="font-size:26px;font-weight:bold;margin-bottom:8px">PLATDO Settings</h2>
+          <p style="margin-bottom:24px">These settings apply to every mini game.</p>
+          <div id="mainSettingsTabs" role="tablist" aria-label="Main settings" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+<button type="button" role="tab" data-main-tab="save" aria-controls="main-save-panel" style="flex:1;padding:10px;border:1px solid #bbb;border-radius:8px;cursor:pointer">Save</button><button type="button" role="tab" data-main-tab="graphics" aria-controls="main-graphics-panel" style="flex:1;padding:10px;border:1px solid #bbb;border-radius:8px;cursor:pointer">Graphics</button><button type="button" role="tab" data-main-tab="display" aria-controls="main-display-panel" style="flex:1;padding:10px;border:1px solid #bbb;border-radius:8px;cursor:pointer">Display</button><button type="button" role="tab" data-main-tab="audio" aria-controls="main-audio-panel" style="flex:1;padding:10px;border:1px solid #bbb;border-radius:8px;cursor:pointer">Audio</button><button type="button" role="tab" data-main-tab="controls" aria-controls="main-controls-panel" style="flex:1;padding:10px;border:1px solid #bbb;border-radius:8px;cursor:pointer">Controls</button></div><section id="main-save-panel" role="tabpanel">
+<button id="manualSaveBtn" style="padding:10px 18px;border-radius:8px;background:#2563eb;color:white;cursor:pointer">Save Progress</button>
+<p id="mainSaveStatus" role="status" style="font-size:13px;margin:10px 0">Progress saves automatically when it changes.</p>
+<label for="autoSaveSelect">Auto-save interval</label><select id="autoSaveSelect" style="padding:8px;margin:12px;border:1px solid #aaa;border-radius:8px">
+<option value="1">1 minute</option><option value="2">2 minutes</option><option value="3">3 minutes</option><option value="4">4 minutes</option><option value="5">5 minutes</option><option value="6">6 minutes</option><option value="7">7 minutes</option><option value="8">8 minutes</option><option value="9">9 minutes</option><option value="10">10 minutes</option></select>
+<p style="font-size:13px;margin-bottom:20px">Extra scheduled saves, in addition to saving changes and saving when you close the game. Default: 5 minutes.</p>
+          <button id="resetAllGamesBtn" style="background:#b91c1c;color:white;border-radius:10px;padding:12px;width:100%;font-weight:bold;cursor:pointer">Reset Game Progress</button>
+          <p style="font-size:13px;margin:10px 0 24px">Choose games to reset after confirmation steps and two safe platform challenges. Nothing is erased until the final Yes. You can cancel at any time.</p>
+</section><section id="main-graphics-panel" role="tabpanel" hidden></section><section id="main-display-panel" role="tabpanel" hidden>          <label for="fpsSelect">Frame rate</label>
+          <select id="fpsSelect" style="margin:0 0 12px 16px;padding:8px;border:1px solid #aaa;border-radius:8px">
+            <option value="30">30 FPS</option><option value="60">60 FPS (Default)</option><option value="120">120 FPS</option><option value="240">240 FPS</option>
+          </select>
+          <p style="font-size:13px;margin-bottom:28px">Maximum frame rate for all PLATDO games.</p>
+<label for="resolutionSelect">Shared resolution ceiling</label><select id="resolutionSelect" style="padding:8px;margin:12px;border:1px solid #aaa;border-radius:8px"><option value="auto">Automatic</option><option value="2160">3840 × 2160 (4K)</option><option value="1440">2560 × 1440</option><option value="1080">1920 × 1080</option><option value="900">1600 × 900</option><option value="720">1280 × 720</option><option value="540">960 × 540</option><option value="360">640 × 360</option><option value="180">320 × 180</option><option value="64x64">64 × 64</option><option value="32x32">32 × 32</option><option value="10x10">10 × 10</option></select><p style="font-size:13px;margin-bottom:24px">Maximum drawing size for every game. Each game’s Graphics menu can reduce this further. The viewport keeps its aspect ratio, including on phones.</p>
+</section><section id="main-audio-panel" role="tabpanel" hidden>
+<label for="menuMusicVolume">Menu music <output id="menuMusicValue">25%</output></label>
+<input id="menuMusicVolume" type="range" min="0" max="100" value="25" style="width:100%;margin:18px 0">
+<p style="font-size:13px;margin-bottom:24px">0% is muted. This controls only the game selection music.</p></section>
+<section id="main-controls-panel" role="tabpanel" hidden>
+ <h3 style="font-size:21px;font-weight:800;margin-bottom:12px">Controls</h3>
+ <label for="controlModeSelect" style="display:block;font-weight:700;margin-bottom:8px">Play using</label>
+ <select id="controlModeSelect" style="width:100%;padding:12px;border:1px solid #aaa;border-radius:8px;margin-bottom:16px"><option value="pc">PC — keyboard &amp; mouse</option><option value="mobile">Mobile — touch controls</option></select>
+ <p style="font-size:14px;line-height:1.6;margin-bottom:12px">Applies to every Platdo game. Mobile shows a movement stick and touch action buttons. PC hides them and uses keyboard and mouse.</p>
+ <p id="controlModeStatus" role="status" style="font-size:13px;margin-bottom:18px">Your choice is saved on this browser.</p>
+</section>
+
+
+          <button id="closeMainSettingsBtn" style="border:1px solid #aaa;border-radius:10px;padding:10px;width:100%;cursor:pointer">Back to Games</button>
+        </dialog>
+        <div class="hub-brand"><img src="assets/images/037025f9fa5a8507ce15.png" alt="PLATDO" width="2000" height="1414"></div>
+        <div class="hub-grid" aria-label="Mini games">
+            <button id="openPlatdoBtn" class="hub-tile" type="button" aria-label="Open PLATDO jump!"><img class="hub-cover" src="assets/images/744075d69fa8d427f25d.png" alt="PLATDO jump!" width="2000" height="2000"></button>
+            <div class="hub-tile" aria-label="Upcoming mini game">Coming soon</div>
+            <div class="hub-tile" aria-label="Upcoming mini game">Coming soon</div>
+            <div class="hub-tile" aria-label="Upcoming mini game">Coming soon</div>
+            <div class="hub-tile" aria-label="Upcoming mini game">Coming soon</div>
+            <div class="hub-tile" aria-label="Upcoming mini game">Coming soon</div>
+        </div>
+    </main>
+    <div id="platdoGame" hidden class="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+        <nav class="hub-back-bar" aria-label="Game navigation"><button id="backToGamesBtn" type="button">← All games</button><span class="jump-nav-brand" aria-hidden="true">PLATDO <b>JUMP</b><i>↗</i></span><span class="jump-nav-caption">THE PLATFORMER</span></nav>
+        
+        <!-- Header / HUD Bar -->
+        <div class="jump-hud bg-slate-950/80 backdrop-blur border-b border-slate-800 p-3 sm:px-6 flex items-center justify-between z-20">
+            <!-- Level Display -->
+            <div class="flex items-center gap-2">
+                <div class="jump-level-readout bg-indigo-600/20 text-indigo-400 font-bold px-3 py-1 rounded-xl border border-indigo-500/30 text-xs sm:text-sm flex items-center gap-1.5">
+                    <span id="levelLabel">LEVEL</span>
+                    <span id="levelDisplay" class="text-base sm:text-lg font-black text-white">1</span>
+                    <span id="levelMaxDisplay" class="text-slate-400 text-xs font-semibold">/ 100</span>
+                </div>
+            </div>
+
+            <!-- Status Message Bar -->
+            <div id="statusMessage" class="hidden sm:block text-xs text-slate-400 font-medium truncate max-w-xs text-center px-2">
+                Reach the flag to finish! Coins are optional bonus cash.
+            </div>
+
+            <!-- Cash & Menu Buttons -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="soundToggleBtn" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-xs sm:text-sm font-bold px-2.5 py-2 rounded-xl transition border border-slate-700 shadow flex items-center justify-center cursor-pointer" title="Toggle Sound">
+                    🔊
+                </button>
+                <div class="jump-cash-readout bg-slate-900 px-3 py-1 sm:px-4 sm:py-1.5 rounded-xl border border-slate-800 text-right">
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Cash</span>
+                    <span id="scoreDisplay" class="text-base sm:text-xl font-black text-emerald-400">$0</span>
+                </div>
+                <button id="menuBtn" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 text-xs sm:text-sm font-bold px-3 py-2 rounded-xl transition border border-slate-700 shadow flex items-center gap-1 cursor-pointer">
+                    Menu
+                </button>
+            </div>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="game-stage relative w-full aspect-[16/9] bg-slate-950 flex items-center justify-center overflow-hidden">
+            <canvas id="gameCanvas" width="800" height="450" class="w-full h-full object-contain block"></canvas>
+
+            <!-- PLATDO jump: the original campaign, with a dedicated desktop menu. -->
+            <div id="titleOverlay" class="absolute inset-0 z-40">
+              <div class="jump-home-layout">
+                <div class="jump-attract-world" aria-hidden="true"><canvas id="jumpMenuPreview" width="800" height="450"></canvas></div>
+                <div class="jump-home-copy">
+                  <div class="jump-eyebrow"><span></span>100 LEVELS. ONE FLAG AT A TIME.</div>
+                  <h1 class="jump-wordmark"><span>PLATDO</span><strong>JUMP<span aria-hidden="true">!</span></strong></h1>
+                  <div class="jump-home-actions" aria-label="PLATDO jump menu">
+                    <button id="startPlayBtn" class="jump-play"><b aria-hidden="true">▶</b><span>PLAY</span><small id="jumpPlayLevel">LEVEL 01</small></button>
+                    <div class="jump-menu-grid">
+                      <button id="levelSelectBtn"><b aria-hidden="true">⚑</b><span>Levels</span><small>01–100</small></button>
+                      <button id="mainWeaponShopBtn"><b aria-hidden="true">⌖</b><span>Weapon shop</span></button>
+                      <button id="shopBtn"><b aria-hidden="true">◆</b><span>Item shop</span></button>
+                      <button id="lockerBtn"><b aria-hidden="true">▣</b><span>Locker</span></button>
+                      <button id="levelEditorBtn"><b aria-hidden="true">✚</b><span>Level editor</span><span id="editorLockBadge">Beat level 10</span></button>
+                      <button id="settingsBtn"><b aria-hidden="true">⚙</b><span>Settings</span></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="jump-home-showcase">
+                  <svg class="jump-arcade-hero" viewBox="0 0 600 570" role="img" aria-label="Your PLATDO character jumping toward coins and the flag">
+                    <defs><linearGradient id="jumpMenuCoin" x2="0" y2="1"><stop stop-color="#fff294"/><stop offset=".5" stop-color="#ffcf36"/><stop offset="1" stop-color="#ed9117"/></linearGradient></defs>
+                    <g fill="none" stroke="#bbf3ff" stroke-width="3" opacity=".42"><path d="M120 225l40-22M99 250l58-16M140 278l24-8M445 75v24m-12-12h24M510 285v24m-12-12h24"/></g>
+                    <g class="jump-menu-coins" fill="url(#jumpMenuCoin)" stroke="#783e14" stroke-width="6"><ellipse cx="286" cy="123" rx="26" ry="33"/><ellipse cx="392" cy="176" rx="26" ry="33"/><ellipse cx="451" cy="257" rx="26" ry="33"/></g>
+                    <g fill="none" stroke="#fff4b0" stroke-width="6"><path d="M285 104v32M391 157v32M450 238v32"/></g>
+                    <g stroke="#0a2336" stroke-width="7" stroke-linejoin="round"><path d="M368 419h175v39H368z" fill="#774927"/><path d="M359 403h192v23l-12-7-12 7-12-7-12 7-12-7-12 7-12-7-12 7-12-7-12 7-12-7-12 7-12-7-12 7z" fill="#7edc4b"/><path d="M64 494h274v48H64z" fill="#8c5532"/><path d="M56 475h290v25l-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8-13-8-13 8z" fill="#8de253"/></g>
+                    <path d="M498 400V204" stroke="#0d2d46" stroke-width="14"/><path d="M498 400V204" stroke="#d2f3ed" stroke-width="6"/><path d="M503 212l62 27-62 29z" fill="#ffcf36" stroke="#0d2d46" stroke-width="6" stroke-linejoin="round"/>
+                    <g class="jump-menu-avatar" transform="translate(184 277) rotate(-12)">
+                      <path d="M-28 106l-28 14m31 5-40 10" stroke="#7fe6ff" stroke-width="9" stroke-linecap="square" opacity=".55"/>
+                      <rect x="0" y="0" width="107" height="144" rx="20" fill="var(--jump-avatar,#2563eb)" stroke="#09213b" stroke-width="9"/>
+                      <path d="M16 118V29q0-13 14-13h32" stroke="#ffffff" stroke-width="7" opacity=".28" fill="none"/>
+                      <circle cx="74" cy="40" r="16" fill="white" stroke="#09213b" stroke-width="4"/><circle cx="80" cy="40" r="8" fill="#09213b"/>
+                    </g>
+                  </svg>
+                  <div class="jump-campaign-progress"><div><span id="jumpPreviewLevel">LEVEL 01</span><strong id="jumpCampaignProgress">0 / 100 cleared</strong></div><div class="jump-progress-track" role="progressbar" aria-label="Campaign completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="jumpCampaignFill"></i></div></div>
+                </div>
+                <div class="jump-home-footer"><span>CAMPAIGN <i>◆</i> CUSTOM LEVELS <i>◆</i> LEVEL EDITOR</span><div id="jumpMenuControls" aria-label="Your movement controls"></div></div>
+              </div>
+            </div>
+
+            <div id="weaponShopModal" class="hidden" data-game-page>
+                <div class="armory-panel">
+                    <h2 class="text-2xl font-black text-teal-300">Weapon Shop</h2>
+                    <p id="weaponShopBalance" class="text-sm text-emerald-400"></p>
+                    <p class="text-xs text-slate-400">Buy ammo packs after reaching the required level. Find bonus loot during play.</p>
+                    <div class="weapon-shop-tabs" role="tablist" aria-label="Weapon shop sections">
+                        <button id="weaponAmmoTab" class="game-button accent" role="tab" aria-selected="true" aria-controls="weaponShopGrid" data-weapon-shop-tab="ammo">Ammo</button>
+                        <button id="weaponUpgradeTab" class="game-button" role="tab" aria-selected="false" aria-controls="weaponShopGrid" data-weapon-shop-tab="upgrades">Upgrades</button>
+                    </div>
+                    <p id="weaponUpgradeHelp" class="audio-note hidden">Less recoil means faster shots. Buy magazine upgrades, then select a size you own. Spare ammo stays in reserve and reloads automatically in one second. Nukes cannot be upgraded.</p>
+                    <div id="weaponShopGrid" class="armory-grid" role="tabpanel" aria-labelledby="weaponAmmoTab"></div>
+                    <p id="weaponShopMessage" role="status"></p>
+                    <button id="closeWeaponShopBtn" class="game-button">Back</button>
+                    <span class="text-xs text-slate-400">Escape pauses or resumes gameplay</span>
+                </div>
+            </div>
+            <!-- Level Editor Modal -->
+            <div id="editorModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-2 sm:p-4 z-50 overflow-hidden">
+                <div class="bg-slate-900 border border-teal-500/40 rounded-2xl p-3 sm:p-4 max-w-3xl w-full flex flex-col items-center shadow-2xl h-full max-h-[98%]">
+                    
+                    <!-- Editor Header -->
+                    <div class="w-full flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-lg sm:text-xl font-black text-teal-400 flex items-center gap-1.5">Level Editor</h2>
+                            <span class="text-[10px] bg-teal-950 text-teal-300 px-2.5 py-0.5 rounded-lg border border-teal-800 font-mono">Custom Creator</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="editorUndoBtn" class="game-button" disabled>↶ Undo</button>
+                            <button id="editorRedoBtn" class="game-button" disabled>↷ Redo</button>
+                            <button id="editorClearBtn" class="bg-rose-900/40 hover:bg-rose-800/60 text-rose-300 font-bold text-xs px-2.5 py-1 rounded-lg border border-rose-700/50 transition cursor-pointer">
+                                🧹 Clear
+                            </button>
+                            <button id="closeEditorBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer">
+                                ✕ Exit
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Editor Tools Toolbar -->
+                    <div class="flex flex-wrap items-center justify-center gap-1.5 w-full bg-slate-950 p-1.5 rounded-xl border border-slate-800 mb-2 text-xs">
+                        <button id="toolPlatform" class="editor-tool active bg-teal-600 text-white font-bold px-2.5 py-1 rounded-lg border border-teal-400 transition cursor-pointer flex items-center gap-1">
+                            🧱 Platform
+                        </button>
+                        <button id="toolCoin" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            🪙 Coin
+                        </button>
+                        <button id="toolSpike" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            ⚠️ Spike
+                        </button>
+                        <button id="toolEnemy" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            👾 Enemy
+                        </button>
+                        <button id="toolStart" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            🏃 Start Point
+                        </button>
+                        <button id="toolFlag" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            🚩 Flag
+                        </button>
+                        <button id="toolEraser" class="editor-tool bg-slate-800 text-slate-300 hover:bg-slate-700 font-bold px-2.5 py-1 rounded-lg border border-slate-700 transition cursor-pointer flex items-center gap-1">
+                            🧽 Eraser
+                        </button>
+                    </div>
+
+                    <!-- Interactive Editor Canvas Canvas -->
+                    <div class="relative w-full aspect-[16/9] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden mb-2 flex-1">
+                        <canvas id="editorCanvas" width="800" height="450" class="w-full h-full object-contain block cursor-crosshair"></canvas>
+                    </div>
+
+                    <!-- Editor Bottom Controls & Save Bar -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2 w-full">
+                        <span id="editorStatus" class="text-xs text-teal-300 truncate max-w-xs font-medium">Click and drag to place platforms. Right-click to erase.</span>
+                        
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <button id="editorTestBtn" class="flex-1 sm:flex-initial bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs px-4 py-2 rounded-xl transition border border-indigo-400 cursor-pointer flex items-center justify-center gap-1">
+                                ▶ Test Level
+                            </button>
+                            <button id="editorSaveCopyBtn" class="game-button hidden">Save Copy</button>
+                            <button id="editorSaveBtn" class="flex-1 sm:flex-initial bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-4 py-2 rounded-xl transition shadow border border-emerald-300/40 cursor-pointer flex items-center justify-center gap-1">
+                                💾 Save Level
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Shop Modal Overlay -->
+            <div id="shopModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 z-50 overflow-y-auto">
+                <div class="bg-slate-900 border border-amber-500/30 rounded-2xl p-4 sm:p-5 max-w-lg w-full flex flex-col items-center shadow-2xl max-h-[95%] overflow-y-auto">
+                    <div class="w-full flex justify-between items-center mb-2">
+                        <h2 class="text-xl sm:text-2xl font-black text-amber-400 flex items-center gap-2">Item Shop</h2>
+                        <span class="text-xs bg-slate-950 text-emerald-400 font-mono font-bold px-3 py-1 rounded-xl border border-slate-800">
+                            Balance: <span id="shopBalanceDisplay" class="font-black">$0</span>
+                        </span>
+                    </div>
+
+                    <!-- Shop Tabs -->
+                    <div class="flex gap-2 w-full mb-3">
+                        <button id="shopTabColors" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-amber-500 text-slate-950 transition border border-amber-400 cursor-pointer">
+                            🎨 Colors
+                        </button>
+                        <button id="shopTabTrails" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700 cursor-pointer">
+                            ✨ Trails
+                        </button>
+                        <button id="shopTabThemes" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700 cursor-pointer">
+                            🖼️ Themes
+                        </button>
+                        <button id="shopTabGunSkins" class="game-button" style="flex:1;padding:6px">Gun Skins</button>
+                    </div>
+
+                    <!-- Theme Sub-filter (Visible only when Themes tab active) -->
+                    <div id="themeSubFilters" class="hidden flex gap-1.5 w-full mb-3 text-[10px] font-bold">
+                        <button id="filterBg" class="flex-1 py-1 rounded-lg bg-indigo-600 text-white border border-indigo-400">Backgrounds</button>
+                        <button id="filterPlat" class="flex-1 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Platforms</button>
+                        <button id="filterFloor" class="flex-1 py-1 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Floors & Spikes</button>
+                    </div>
+
+                    <p id="shopMsg" class="text-xs text-slate-400 mb-3 text-center">Earn cash by collecting coins & beating levels to buy new colors, trails & themes!</p>
+
+                    <!-- Shop Items Grid -->
+                    <div id="shopGrid" class="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 overflow-y-auto max-h-52 p-1">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <button id="closeShopBtn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl transition border border-slate-700 cursor-pointer">
+                        Close Shop
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dedicated Locker Modal Overlay -->
+            <div id="lockerModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 z-50 overflow-y-auto">
+                <div class="bg-slate-900 border border-purple-500/30 rounded-2xl p-4 sm:p-5 max-w-lg w-full flex flex-col items-center shadow-2xl max-h-[95%] overflow-y-auto">
+                    <div class="w-full flex justify-between items-center mb-2">
+                        <h2 class="text-xl sm:text-2xl font-black text-purple-400 flex items-center gap-2">Locker / Wardrobe</h2>
+                        <span class="text-xs bg-slate-950 text-purple-300 font-mono font-bold px-3 py-1 rounded-xl border border-purple-500/20">
+                            Owned Items
+                        </span>
+                    </div>
+
+                    <!-- Locker Navigation Tabs -->
+                    <div class="flex gap-2 w-full mb-3">
+                        <button id="lockerTabColors" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-purple-600 text-white transition border border-purple-400 cursor-pointer shadow">
+                            🎨 Colors
+                        </button>
+                        <button id="lockerTabTrails" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700 cursor-pointer">
+                            ✨ Trails
+                        </button>
+                        <button id="lockerTabThemes" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700 cursor-pointer">
+                            🖼️ Themes
+                        </button>
+                        <button id="lockerTabGunSkins" class="game-button" style="flex:1;padding:6px">Gun Skins</button>
+                    </div>
+
+                    <div id="lockerThemeFilters" class="hidden theme-filters"></div>
+                    <!-- Character Live Preview in Locker -->
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col items-center justify-center mb-3 w-full">
+                        <canvas id="lockerPreviewCanvas" width="120" height="80" class="bg-slate-900/50 rounded-lg border border-slate-800 mb-1"></canvas>
+                        <span id="previewName" class="text-xs font-bold text-purple-300">Hero Blue (No Trail)</span>
+                    </div>
+
+                    <p id="lockerMsg" class="text-xs text-slate-400 mb-3 text-center">Select any unlocked color or trail to equip it for gameplay!</p>
+
+                    <!-- Locker Items Grid -->
+                    <div id="lockerGrid" class="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 overflow-y-auto max-h-52 p-1">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <button id="closeLockerBtn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl transition border border-slate-700 cursor-pointer">
+                        Done / Save Outfit
+                    </button>
+                </div>
+            </div>
+
+            <!-- Level Select Overlay with Tabs -->
+            <div id="levelSelectModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 z-50">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 max-w-md w-full flex flex-col items-center shadow-2xl">
+                    <h2 class="text-2xl font-black text-indigo-400 mb-1">Select Level</h2>
+                    
+                    <div class="score-totals" aria-label="Separate high-score totals">
+                        <div><span>Campaign high score</span><strong id="campaignHighScoreTotal">$0</strong></div>
+                        <div><span>Custom high score</span><strong id="customHighScoreTotal">$0</strong></div>
+                    </div>
+                    <p class="score-totals-help">Each total adds up your best score on each level in that category.</p>
+                    <!-- Level Selector Tabs -->
+                    <div class="flex gap-2 w-full mb-4">
+                        <button id="levelTabCampaign" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-indigo-600 text-white transition border border-indigo-400 cursor-pointer shadow">
+                            Campaign
+                        </button>
+                        <button id="levelTabMyLevels" class="flex-1 py-1.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700 cursor-pointer">
+                            My Levels
+                        </button>
+                    </div>
+
+                    <div id="levelGrid" class="grid grid-cols-5 gap-2.5 w-full mb-5 max-h-60 overflow-y-auto p-1">
+                        <!-- Generated via JS -->
+                    </div>
+
+                    <button id="closeLevelSelectBtn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl transition border border-slate-700 cursor-pointer">
+                        Close
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings / Keybindings Modal -->
+            <div id="settingsModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 z-50">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 max-w-md w-full flex flex-col items-center shadow-2xl max-h-[90%] overflow-y-auto">
+                    <h2 class="text-xl font-black text-slate-100 mb-3 flex items-center gap-2">Settings</h2>
+                    
+                    <div id="settingsTabs" class="settings-tabs" role="tablist" aria-label="Settings sections">
+                        <button id="settingsTabAudio" class="game-button accent" role="tab" aria-selected="true" aria-controls="settingsAudioPanel" data-settings-tab="audio">Audio</button>
+                        <button id="settingsTabKeys" class="game-button" role="tab" aria-selected="false" aria-controls="settingsKeysPanel" tabindex="-1" data-settings-tab="keys">Key Binds</button>
+                        <button id="settingsTabInventory" class="game-button" tabindex="-1" role="tab" aria-selected="false" aria-controls="settingsInventoryPanel" data-settings-tab="inventory">Inventory</button>
+                    </div>
+                    <section id="settingsInventoryPanel" class="settings-panel hidden" role="tabpanel" aria-labelledby="settingsTabInventory">
+                    <h3 class="text-sm font-bold mt-3 mb-2">Inventory order</h3>
+                    <p class="text-xs text-slate-400 mb-2">First to last follows Inventory Down / Wheel Down.</p>
+                    <div id="inventoryOrder" class="binding-list"></div>
+                    </section>
+                    <section id="settingsKeysPanel" class="settings-panel hidden" role="tabpanel" aria-labelledby="settingsTabKeys">
+                    <p class="text-xs text-slate-400 mb-3">Click a binding to change it, or + to add one (up to 5). Keys, mouse buttons, and wheel directions are supported. Escape pauses or resumes gameplay; press it at the main menu to return to all games.</p>
+                    <div id="bindingRows" class="binding-list"></div>
+                    <div id="bindingCapture" class="hidden binding-capture">
+                        <p id="bindingCaptureMessage" role="status"></p>
+                        <button id="cancelBindingBtn" class="game-button">Cancel binding</button>
+                    </div>
+                    </section>
+<section id="settingsAudioPanel" class="settings-panel" role="tabpanel" aria-labelledby="settingsTabAudio"><div class="settings-tabs" role="tablist" aria-label="Audio mode"><button class="game-button" role="tab" data-audio-view="basic" aria-controls="audio-basic-panel" aria-selected="true">Basic Audio</button><button class="game-button" role="tab" data-audio-view="advanced" aria-controls="audio-advanced-panel" aria-selected="false">Advanced Audio</button></div><div id="audio-basic-panel" role="tabpanel"><p class="audio-note">0% is muted. 100% is full volume.</p><p id="advancedAudioNote" class="audio-note" role="status"></p><div class="audio-row"><label for="volume-environment">Environment — jumping, landing and deaths<output id="value-environment">100%</output></label><input id="volume-environment" data-audio-category="environment" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-sfx">SFX — pickups, level completion and menus<output id="value-sfx">100%</output></label><input id="volume-sfx" data-audio-category="sfx" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-weapons">Weapons — shots, nukes and no-ammo sounds<output id="value-weapons">100%</output></label><input id="volume-weapons" data-audio-category="weapons" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-music">Music — background tracks<output id="value-music">100%</output></label><input id="volume-music" data-audio-category="music" type="range" min="0" max="100" step="1" value="100"></div><button id="resetAdvancedAudioBtn" class="game-button">Reset Advanced Audio Settings</button><p class="audio-note">To change basic audio settings, press this button. It resets every advanced slider to 100% and unlocks all grayed-out basic sliders. Your previous basic volumes will apply again.</p></div><div id="audio-advanced-panel" role="tabpanel" hidden><p class="audio-note">Changing any sound locks all basic sliders until you reset Advanced Audio in Basic Audio. Advanced volumes apply directly, without basic volume adjustments.</p><div class="settings-tabs" role="tablist" aria-label="Advanced audio categories"><button class="game-button" role="tab" data-audio-group="weapons" aria-controls="advanced-weapons" aria-selected="true">Weapons</button><button class="game-button" role="tab" data-audio-group="environment" aria-controls="advanced-environment" aria-selected="false">Environment</button><button class="game-button" role="tab" data-audio-group="sfx" aria-controls="advanced-sfx" aria-selected="false">SFX</button><button class="game-button" role="tab" data-audio-group="music" aria-controls="advanced-music" aria-selected="false">Music</button></div><div id="advanced-weapons" role="tabpanel"><div class="audio-row"><label for="volume-sniper">Sniper shot<output id="value-sniper">100%</output></label><input id="volume-sniper" data-audio-sound="sniper" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-pistol">Pistol shot<output id="value-pistol">100%</output></label><input id="volume-pistol" data-audio-sound="pistol" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-ak48">AK-48 shot<output id="value-ak48">100%</output></label><input id="volume-ak48" data-audio-sound="ak48" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-nuke">Nuke explosion<output id="value-nuke">100%</output></label><input id="volume-nuke" data-audio-sound="nuke" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-empty">No ammo<output id="value-empty">100%</output></label><input id="volume-empty" data-audio-sound="empty" type="range" min="0" max="100" step="1" value="100"></div></div><div id="advanced-environment" role="tabpanel" hidden><div class="audio-row"><label for="volume-jump">Jump<output id="value-jump">100%</output></label><input id="volume-jump" data-audio-sound="jump" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-land">Ground landing<output id="value-land">100%</output></label><input id="volume-land" data-audio-sound="land" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-stomp">Enemy head stomp<output id="value-stomp">100%</output></label><input id="volume-stomp" data-audio-sound="stomp" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-enemyDeath">Enemy death<output id="value-enemyDeath">100%</output></label><input id="volume-enemyDeath" data-audio-sound="enemyDeath" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-playerDeath">Player death<output id="value-playerDeath">100%</output></label><input id="volume-playerDeath" data-audio-sound="playerDeath" type="range" min="0" max="100" step="1" value="100"></div></div><div id="advanced-sfx" role="tabpanel" hidden><div class="audio-row"><label for="volume-coin">Coin / loot pickup<output id="value-coin">100%</output></label><input id="volume-coin" data-audio-sound="coin" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-levelComplete">Level complete<output id="value-levelComplete">100%</output></label><input id="volume-levelComplete" data-audio-sound="levelComplete" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-levelBonus">5× level complete<output id="value-levelBonus">100%</output></label><input id="volume-levelBonus" data-audio-sound="levelBonus" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-weaponMax">Weapon fully upgraded<output id="value-weaponMax">100%</output></label><input id="volume-weaponMax" data-audio-sound="weaponMax" type="range" min="0" max="100" step="1" value="100"></div><div class="audio-row"><label for="volume-menuClick">Menu click<output id="value-menuClick">100%</output></label><input id="volume-menuClick" data-audio-sound="menuClick" type="range" min="0" max="100" step="1" value="100"></div></div><div id="advanced-music" role="tabpanel" hidden><p class="audio-note">No music tracks have been added yet.</p></div></div></section>
+
+
+                    <div class="w-full flex gap-2">
+                        <button id="adminBtn" class="bg-indigo-900/40 hover:bg-indigo-900/70 text-indigo-300 font-bold text-xs py-2.5 px-3 rounded-xl border border-indigo-700/50 transition">
+                            🔐 Admin
+                        </button>
+                        <button id="closeSettingsBtn" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl transition border border-slate-700 cursor-pointer">
+                            Done
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Modal -->
+            <div id="adminModal" class="hidden absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 z-50">
+                <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl p-5 max-w-sm w-full flex flex-col items-center shadow-2xl">
+                    <h2 class="text-xl font-black text-indigo-400 mb-2">Admin</h2>
+                    
+                    <div id="adminAuthSection" class="w-full flex flex-col items-center">
+                        <p class="text-xs text-slate-400 mb-3 text-center">Enter passcode to unlock admin cheats:</p>
+                        <input id="adminPassInput" type="password" placeholder="Enter Passcode..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-center text-sm font-mono text-white mb-3 outline-none focus:border-indigo-500">
+                        <button id="adminAuthBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs py-2 rounded-xl transition mb-2">
+                            Unlock
+                        </button>
+                        <p id="adminAuthError" class="text-xs text-rose-400 hidden">Incorrect Passcode!</p>
+                    </div>
+
+                    <div id="adminControlsSection" class="hidden w-full flex flex-col gap-2">
+                        <button id="adminAddCashBtn" class="w-full bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 font-bold text-xs py-2 rounded-xl border border-emerald-500/40">
+                            💵 Add +$10,000 Cash
+                        </button>
+                        <button id="adminPassLevelBtn" class="w-full bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 font-bold text-xs py-2 rounded-xl border border-indigo-500/40">
+                            ⚡ Pass Current Level (+Cash)
+                        </button>
+                        <button id="adminUnlockAllBtn" class="w-full bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 font-bold text-xs py-2 rounded-xl border border-amber-500/40">
+                            🔓 Unlock All Levels & Editor
+                        </button>
+                        <button id="adminInfiniteAmmoBtn" class="game-button accent" style="width:100%" aria-pressed="false">Infinite ammo: OFF</button>
+                        <button id="adminBeatGameBtn" class="game-button accent" style="width:100%">Beat Game</button>
+                        <p id="adminBeatGameStatus" class="audio-note" role="status"></p>
+                        <button id="adminResetProgressBtn" class="w-full bg-rose-600/30 hover:bg-rose-600/50 text-rose-300 font-bold text-xs py-2 rounded-xl border border-rose-500/40 cursor-pointer">
+                            🗑 Reset All PLATDO jump! Progress
+                        </button>
+                    </div>
+
+                    <p class="audio-note">Reset immediately erases all PLATDO jump! progress, scores, custom levels, purchases, settings and key binds. No undo. Other mini games are unaffected.</p>
+                    <button id="closeAdminBtn" class="mt-4 w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-2 rounded-xl border border-slate-700">
+                        Close
+                    </button>
+                </div>
+            </div>
+
+            <div id="maxFlagToast" hidden role="status"><strong>5× MAX!</strong><span>Perfect flag grab!</span></div>
+            <!-- Win / Level Clear Overlay -->
+            <div id="winOverlay" class="hidden absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center text-center p-6 z-50">
+                <div id="maxConfetti" aria-hidden="true"></div>
+                <div id="maxWinBanner" hidden role="status"><strong>5×</strong><span>MAX MULTIPLIER!</span><small>Perfect flag finish!</small></div>
+                <div id="winIcon" class="text-5xl mb-2">🚩</div>
+                <h2 id="winTitle" class="text-3xl font-black text-white mb-1">Level 1 Completed!</h2>
+                <div id="finalScore" class="text-slate-300 text-sm mb-4">Total Cash: $0</div>
+                
+                <div class="flex gap-3">
+                    <button id="nextLevelBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm px-5 py-2.5 rounded-xl transition shadow-lg cursor-pointer">
+                        Next Level ▶
+                    </button>
+                    <button id="winMenuBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm px-4 py-2.5 rounded-xl border border-slate-700 transition cursor-pointer">
+                        Main Menu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pause Overlay -->
+            <div id="pauseOverlay" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex flex-col items-center justify-center z-40">
+                <h2 class="text-3xl font-black text-white mb-4">PAUSED</h2>
+                <div class="flex flex-col gap-2 w-48">
+                    <button id="resumeBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl shadow cursor-pointer">Resume</button>
+                    <button id="restartBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 cursor-pointer">Restart Level</button>
+                    <button id="pauseSettingsBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 cursor-pointer">Settings</button>
+                    <button id="backToEditorBtn" class="game-button accent hidden">Back to Editor</button>
+                    <button id="pauseMenuBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-2.5 rounded-xl border border-slate-700 cursor-pointer">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="weapon-bar">
+            <div id="inventoryTray" aria-label="Weapon inventory"></div>
+            <label for="weaponSelect" class="hidden">Item</label>
+            <select id="weaponSelect" class="weapon-select hidden" aria-label="Equipped weapon"></select>
+            <button id="fireWeaponBtn" class="game-button accent">Fire · E</button>
+            <button id="inGameWeaponShopBtn" class="game-button">Weapon Shop</button>
+            <span id="weaponHelp" class="weapon-help">Stomp enemies by jumping on their heads. Weapons unlock from level 10.</span>
+        </div>
+        <!-- Mobile Touch Controls Bar -->
+        <div class="jump-touch-controls sm:hidden bg-slate-950 p-3 border-t border-slate-800 flex justify-between items-center z-20">
+            <div class="flex gap-2">
+                <button id="touchLeft" class="bg-slate-800 active:bg-indigo-600 text-white text-xl font-bold w-14 h-12 rounded-xl flex items-center justify-center border border-slate-700 active:scale-95 transition">◀</button>
+                <button id="touchRight" class="bg-slate-800 active:bg-indigo-600 text-white text-xl font-bold w-14 h-12 rounded-xl flex items-center justify-center border border-slate-700 active:scale-95 transition">▶</button>
+            </div>
+            <button id="touchJump" class="bg-emerald-600 active:bg-emerald-500 text-white text-sm font-black px-8 h-12 rounded-xl flex items-center justify-center border border-emerald-400 active:scale-95 transition shadow-lg">JUMP ⬆</button>
+        </div>
+    </div>
+
+    <script src="assets/js/v16-script-04.js"></script>
+
+
+
+
+
+
+
+
+<!-- PLATDO DRIVE BEGIN -->
+<!-- Three.js license: The MIT License
+
+Copyright © 2010-2023 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+ -->
+<link rel="stylesheet" href="assets/css/v16-style-25.css">
+<script src="assets/js/v16-script-05.js"></script>
+<script src="assets/js/v16-script-06.js"></script>
+<script src="assets/js/v16-script-07.js"></script>
+<script src="assets/js/v16-script-08.js"></script>
+<script src="assets/js/v16-script-09.js"></script>
+<script src="assets/js/v16-script-10.js"></script>
+<script src="assets/js/v16-script-11.js"></script>
+<script src="assets/js/v16-script-12.js"></script>
+<script src="assets/js/v16-script-13.js"></script>
+<script src="assets/js/v16-script-14.js"></script>
+<script src="assets/js/v16-script-15.js"></script>
+<script src="assets/js/v16-script-16.js"></script>
+<script src="assets/js/v16-script-17.js"></script>
+<script src="assets/js/v16-script-18.js"></script>
+<script src="assets/js/v16-script-19.js"></script>
+<script src="assets/js/v16-script-20.js"></script>
+<script src="assets/js/v16-script-21.js"></script>
+<script src="assets/js/v16-script-22.js"></script>
+<!-- PLATDO DRIVE END -->
+
+
+<!-- PLATDO SWING BEGIN -->
+<!-- Three.js license: The MIT License
+
+Copyright © 2010-2023 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+ -->
+<link rel="stylesheet" href="assets/css/v16-style-26.css">
+<script src="assets/js/v16-script-23.js"></script>
+<script src="assets/js/v16-script-24.js"></script>
+<script src="assets/js/v16-script-25.js"></script>
+<script src="assets/js/v16-script-26.js"></script>
+<script src="assets/js/v16-script-27.js"></script>
+<script src="assets/js/v16-script-28.js"></script>
+<script src="assets/js/v16-script-29.js"></script>
+<script src="assets/js/v16-script-30.js"></script>
+<script src="assets/js/v16-script-31.js"></script>
+<script src="assets/js/v16-script-32.js"></script>
+<!-- PLATDO SWING END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PLATDO CITY BEGIN -->
+<!-- Third-party license
+The MIT License
+
+Copyright © 2010-2023 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-->
+<link rel="stylesheet" href="assets/css/v16-style-27.css">
+<script src="assets/js/v16-script-33.js"></script>
+<script src="assets/js/v16-script-34.js"></script>
+<script src="assets/js/v16-script-35.js"></script>
+<script src="assets/js/v16-script-36.js"></script>
+<script src="assets/js/v16-script-37.js"></script>
+<script src="assets/js/v16-script-38.js"></script>
+<script src="assets/js/v16-script-39.js"></script>
+<script src="assets/js/v16-script-40.js"></script>
+<script src="assets/js/v16-script-41.js"></script>
+<script src="assets/js/v16-script-42.js"></script>
+<script src="assets/js/v16-script-43.js"></script>
+<script src="assets/js/v16-script-44.js"></script>
+<script src="assets/js/v16-script-45.js"></script>
+<script src="assets/js/v16-script-46.js"></script>
+<script src="assets/js/v16-script-47.js"></script>
+<script src="assets/js/v16-script-48.js"></script>
+<script src="assets/js/v16-script-49.js"></script>
+<script src="assets/js/v16-script-50.js"></script>
+<script src="assets/js/v16-script-51.js"></script>
+<script src="assets/js/v16-script-52.js"></script>
+<script src="assets/js/v16-script-53.js"></script>
+<script src="assets/js/v16-script-54.js"></script>
+<script src="assets/js/v16-script-55.js"></script>
+<script src="assets/js/v16-script-56.js"></script>
+<script src="assets/js/v16-script-57.js"></script>
+<script src="assets/js/v16-script-58.js"></script>
+<script src="assets/js/v16-script-59.js"></script>
+<script src="assets/js/v16-script-60.js"></script>
+<script src="assets/js/v16-script-61.js"></script>
+<!-- PLATDO CITY END -->
+</body>
+</html>
