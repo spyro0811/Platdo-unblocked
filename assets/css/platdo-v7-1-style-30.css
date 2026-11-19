@@ -1,0 +1,20 @@
+.home-visit{position:fixed;inset:0;box-sizing:border-box;width:100vw;height:100dvh;max-width:none;max-height:none;padding:0;margin:0;border:0;background:#101d22;color:#f6f5ef;z-index:31000;font:16px system-ui}
+.home-visit::backdrop{background:#101d22}.home-visit canvas.home-visit-view{display:block;width:100%;height:100%;touch-action:none;outline:0}
+.home-visit header{position:absolute;left:20px;right:20px;top:max(16px,env(safe-area-inset-top));display:flex;justify-content:space-between;gap:16px;align-items:flex-start;pointer-events:none}
+.home-visit header>div{padding:12px 16px;background:#14252cd9;border-left:3px solid #d6bd82;border-radius:4px;max-width:min(560px,70%)}
+.home-visit h2{margin:0 0 3px;font:700 clamp(18px,2.2vw,29px) system-ui}.home-visit p{margin:4px 0;color:#e2e5e1;font-size:13px;line-height:1.5}
+.home-visit button{font:600 14px system-ui;border:1px solid #779199;border-radius:7px;background:#15292fe8;color:#f6f5ef;padding:12px 16px;min-height:44px;cursor:pointer;pointer-events:auto}
+.home-visit button:focus-visible{outline:3px solid #f1d193;outline-offset:3px}.home-visit button:hover{background:#27434c}.home-visit button:disabled{opacity:.6;cursor:wait}
+.home-visit .home-visit-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:50%;pointer-events:auto}
+.home-visit .home-visit-status{position:absolute;left:50%;bottom:100px;transform:translateX(-50%);padding:8px 14px;border-radius:6px;background:#14252ce8;text-align:center;max-width:70%;font-size:14px;pointer-events:none}
+.home-visit .home-visit-status:empty{display:none}
+.home-visit .home-visit-help{position:absolute;bottom:max(15px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#14252ccf;border-radius:7px;padding:9px 14px;max-width:75%;text-align:center;pointer-events:none}
+.home-visit .home-visit-touch{position:absolute;inset:auto 16px max(18px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:flex-end;gap:12px;pointer-events:none}
+.home-visit .home-visit-touch[hidden]{display:none}.home-visit .home-visit-pad{display:grid;grid-template-columns:repeat(3,50px);gap:5px;pointer-events:auto}.home-visit .home-visit-pad button{padding:8px;touch-action:none;user-select:none}
+.home-visit .home-visit-pad [data-input=forward]{grid-column:2}.home-visit .home-visit-pad [data-input=left]{grid-column:1}.home-visit .home-visit-pad [data-input=back]{grid-column:2}.home-visit .home-visit-pad [data-input=right]{grid-column:3}
+.home-visit .home-visit-pad-actions{display:flex;gap:6px;pointer-events:auto}.home-visit .home-visit-pad-actions button{touch-action:none;user-select:none}
+.home-visit .home-visit-activity{position:absolute;inset:12% 6%;padding:0;border:1px solid #789097;background:#12202a;z-index:3;overflow:auto;border-radius:10px}.home-visit .home-visit-activity[hidden]{display:none}
+.home-check{position:fixed;inset:0;z-index:32000;background:#0e1c24ee;display:grid;place-content:center;padding:20px;color:#fff;font:16px system-ui}.home-check>section{max-width:460px;border:1px solid #69818d;background:#18313c;border-radius:14px;padding:24px}.home-check h2{margin:0 0 12px}.home-check p{line-height:1.6}.home-check nav{display:flex;gap:10px;flex-wrap:wrap}.home-check button{border:1px solid #9cb4bc;background:#244653;color:white;border-radius:7px;padding:12px 18px;font:600 15px system-ui;cursor:pointer;min-height:44px}
+@media(max-width:650px){.home-visit header{left:10px;right:10px;gap:7px}.home-visit header>div{padding:8px 10px;max-width:57%}.home-visit header p{font-size:11px}.home-visit .home-visit-actions{gap:4px;max-width:42%}.home-visit button{padding:9px 10px;font-size:12px}.home-visit .home-visit-help{bottom:150px;font-size:11px}.home-visit .home-visit-status{bottom:187px;width:max-content;max-width:80%;font-size:12px}}
+
+.home-visit .home-visit-pause{inset:20% max(8%,calc((100% - 460px)/2));padding:28px;display:flex;flex-direction:column;align-items:stretch;gap:12px}.home-visit .home-visit-pause h2{margin:0 0 12px}.home-visit .home-visit-pause[hidden]{display:none}

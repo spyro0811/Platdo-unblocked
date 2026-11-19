@@ -1,0 +1,1 @@
+PlatdoLoadingBubbles.mount("platdoStartup");
