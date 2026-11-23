@@ -1,0 +1,1 @@
+/* Pictures of each update for the update log (V7.6 on). */window.PlatdoReleaseGallery=window.PlatdoReleaseGallery||{};window.PlatdoReleaseGallery["9.8"]=[["assets/images/d24110e3dceacae1df1e.jpg","Group details: every button now has its label in the middle"],["assets/images/bd613ef216f8a77a1de1.jpg","Platdo Pay: Confirm, Cancel, the $ and the send arrow, all centred"]];

@@ -1,0 +1,1 @@
+/* Pictures of each update for the update log (V7.6 on). */window.PlatdoReleaseGallery=window.PlatdoReleaseGallery||{};window.PlatdoReleaseGallery["14.2"]=[["assets/images/075f50f2bc23f6f98459.jpg","The settings: Pedestrian density now in percent up to 200 %, and the new Traffic density slider (0-200 %)"]];
