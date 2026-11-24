@@ -1,0 +1,1 @@
+/* Pictures of each update for the update log (V7.6 on). */window.PlatdoReleaseGallery=window.PlatdoReleaseGallery||{};window.PlatdoReleaseGallery["15.7"]=[["assets/images/b8877a65a690108dd7f8.jpg","Walking in at the front door of Vista House: the doorway step no longer stops you"]];

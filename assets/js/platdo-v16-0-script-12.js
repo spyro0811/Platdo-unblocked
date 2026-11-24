@@ -1,0 +1,1 @@
+/* V14.8: the version, as the main menu shows it */(function(){const el=document.getElementById('platdoStartupVersion'),b=String(window.PlatdoBuildName||'');if(el&&b)el.textContent='PLATDO · '+b.toUpperCase();})();

@@ -1,0 +1,33 @@
+html[data-platdo-loading] body{overflow:hidden!important}
+html[data-platdo-loading] body > :not(#platdoStartup):not(#platdoOwnerSwitch):not(script):not(style){visibility:hidden!important;pointer-events:none!important}
+#platdoStartup{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:#090c0b;color:#f5f5ee;padding:28px;font:16px/1.5 system-ui,sans-serif}
+#platdoStartup[hidden]{display:none!important}
+#platdoStartup [hidden]{display:none!important}
+#platdoStartup .startup-card{width:min(440px,100%)}
+#platdoStartup .startup-version{position:absolute;left:64px;bottom:24px;font:10px/15px system-ui,sans-serif;letter-spacing:.17em;color:#f4f2ec99;pointer-events:none}
+@media(max-width:700px){#platdoStartup .startup-version{left:20px;bottom:16px}}
+#platdoStartup h1{font:800 clamp(46px,12vw,80px)/1 system-ui,sans-serif;letter-spacing:-.065em;margin:0 0 38px}
+#platdoStartup h1 span{color:#d3ef74}
+#platdoStartup .startup-disclaimer{font:13px/1.5 system-ui;color:#b5beb9;margin:-18px 0 24px}
+#platdoStartup .startup-disclaimer strong{color:#ff766d}
+#platdoStartup progress{display:block;width:100%;height:12px;accent-color:#d3ef74}
+#platdoStartup .startup-line{display:flex;gap:20px;align-items:baseline;justify-content:space-between;margin:18px 0 0}
+#platdoStartupPercent{font-variant-numeric:tabular-nums;font-weight:800;font-size:26px;color:#d3ef74}
+#platdoStartupLabel{color:#c0cac3;margin:0;overflow-wrap:anywhere}
+#platdoStartupRetry{margin-top:24px;background:#d3ef74;color:#152211;border:0;border-radius:3px;padding:12px 22px;font:700 15px system-ui;cursor:pointer}
+#platdoStartupRetry[hidden]{display:none}
+
+#platdoStartupDetails{margin:.5rem 0;min-width:0}#platdoStartupDetails summary{cursor:pointer;font-size:.85rem;color:#bdcbc8}#platdoStartupDetails pre{max-height:22vh;overflow:auto;font:12px/1.45 monospace;white-space:pre-wrap;overflow-wrap:anywhere;user-select:text}
+
+.pb-bubbles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;contain:layout style}
+#webPreparation.pb-enabled,#platdoStartup.pb-enabled .startup-card{position:relative;z-index:1}
+#platdoStartup.pb-enabled .pb-bubbles{z-index:0}
+.pb-bubble{position:absolute;bottom:-76px;width:64px;height:64px;margin:0;padding:0;border:1px solid #dcfff3b3;border-radius:50%;background:radial-gradient(circle at 28% 22%,#ffffffb3 0 3%,#b6fbe536 8%,#61bea714 43%,#a0ebce4d 77%,#f0fff8b3 100%);box-shadow:inset -5px -7px 12px #6ecac333,inset 3px 3px 9px #ffffff45,0 0 12px #99f3ca12;color:#e7fff4;font:700 12px/1 system-ui,sans-serif;text-shadow:0 1px 3px #071c16;pointer-events:auto;cursor:pointer;touch-action:manipulation;user-select:none;animation:pb-rise var(--pb-duration,9s) linear forwards;will-change:transform}
+.pb-bubble:before{content:"";position:absolute;top:10px;left:13px;width:18px;height:7px;border-radius:50%;background:#fff8;transform:rotate(-30deg)}
+.pb-bubble:focus-visible{outline:3px solid #d3ef74;outline-offset:5px;animation-play-state:paused}
+.pb-bubble.pb-popped{pointer-events:none;animation:pb-pop .18s ease-out forwards!important}
+@keyframes pb-rise{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--pb-drift,12px),calc(-1 * var(--pb-rise,600px)),0)}}
+@keyframes pb-pop{from{transform:translate3d(var(--pb-pop-x,0),var(--pb-pop-y,0),0) scale(1);opacity:1}to{transform:translate3d(var(--pb-pop-x,0),var(--pb-pop-y,0),0) scale(1.45);opacity:0}}
+@media(max-width:719px){body.pb-web-loading{padding-bottom:114px}#platdoStartup.pb-enabled{padding-bottom:114px}.pb-bubble{width:56px;height:56px;font-size:11px}}
+@media(max-width:719px) and (max-height:520px){#webPreparation h1,#platdoStartup.pb-enabled h1{font-size:40px;margin-bottom:18px}#webPreparation .startup-disclaimer,#platdoStartup.pb-enabled .startup-disclaimer{font-size:11px;margin:0 0 12px}#webPreparation #status{min-height:0;margin:10px 0}#platdoStartup.pb-enabled .startup-line{margin-top:10px}}
+@media(prefers-reduced-motion:reduce){.pb-bubble{animation:none;bottom:16px;will-change:auto}.pb-bubble.pb-popped{animation:none!important;opacity:0}}

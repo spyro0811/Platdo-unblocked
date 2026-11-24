@@ -1,0 +1,9 @@
+/* V10.5: the real-money shop is gone. This list only names what the old shop handed out, so that an account that
+   already had one of these keeps it: the buggy and the F1 become normal owned vehicles, the drone is free for everyone,
+   and the mansion stays that account's home. Nothing here can be bought and nothing has a price. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.PlatdoPremiumCatalog=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){'use strict';
+const products=[{"id":"CITY-08","mode":"CITY","name":"Sunrunner Buggy","type":"one-time","category":"Vehicles","includes":[],"itemIds":["city-08.content"],"availability":"legacy"},{"id":"CITY-17","mode":"CITY","name":"Sky Scout Drone Kit","type":"one-time","category":"Gadgets","includes":[],"itemIds":["city-17.content"],"availability":"legacy"},{"id":"DRIVE-23","mode":"DRIVE","name":"F1","type":"one-time","category":"Vehicles","includes":[],"itemIds":["drive-23.content"],"availability":"legacy"},{"id":"CITY_MANSION_01","mode":"BOTH","name":"Mega Modern Mansion","type":"one-time","category":"Homes","includes":[],"itemIds":["city.home.mansion"],"availability":"legacy","adminGrantable":true,"accountWide":true,"homeId":"mega-modern-mansion"}];
+function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}
+freeze(products);const byId=Object.freeze(Object.fromEntries(products.map(p=>[p.id,p])));
+return Object.freeze({schema:1,products,byId,notice:'The shop is closed. Everything in PLATDO is earned or bought with game money.',guestNotice:'',terms:'',itemsFor(id){if(!byId[id])throw Error('Unknown product.');return [...byId[id].itemIds];},price(){return null;}});
+});

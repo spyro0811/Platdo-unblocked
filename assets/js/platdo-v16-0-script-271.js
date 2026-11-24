@@ -1,0 +1,1 @@
+/* Pictures of each update for the update log (V7.6 on). */window.PlatdoReleaseGallery=window.PlatdoReleaseGallery||{};window.PlatdoReleaseGallery["11.5"]=[["assets/images/7b4d3f6cd5270ee2d9ab.jpg","The City's own menu screens now play your song too, the same one as the PLATDO main menu"]];
